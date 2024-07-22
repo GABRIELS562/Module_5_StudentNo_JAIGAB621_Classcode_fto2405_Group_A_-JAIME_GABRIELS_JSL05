@@ -11,6 +11,11 @@ const songs = [
     { title: "Come and Get Your Love", artist: "Redbone", genre: "Rock" },
     { title: "I'm Not in Love", artist: "10cc", genre: "Pop" },
     { title: "Fooled Around and Fell in Love", artist: "Elvin Bishop", genre: "Rock" },
+    { title: "Shot for me", artist: "Drake", genre: "Rap" },
+    { title: "Hymn for the weekend", artist: "Coldplay", genre: "Rock" },
+    { title: "Heartbreak Anniversary", artist: "Giveon", genre: "R&B, Soul" },
+    { title: "I wonder", artist: "Kanye West", genre: "Hip Hop" },
+    { title: "Stronger", artist: "Kanye West", genre: "Hip Hop" },
     // Feel free to add even more songs
 ];
 
