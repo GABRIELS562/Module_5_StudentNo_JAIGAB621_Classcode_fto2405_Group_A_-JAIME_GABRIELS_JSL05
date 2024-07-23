@@ -49,16 +49,60 @@ function generatePlaylist(guardians, songs) {
    
     return Object.entries(guardians).map(([guardian, preferredGenre]) => ({
         guardian,
-        playlist: songs.filter(song => song.genre.toLowerCase() === preferredGenre.toLowerCase())
-    }))
-}
-const playlist = generatePlaylist(guardians, songs);
+        playlist: songs.filter(song => song.genre.includes(preferredGenre))
+            }));
+        }
 
-console.log(playlist); 
+const playlists = generatePlaylist(guardians, songs);
+
+//console.log(playlists); 
+
+// Call generatePlaylist to get the playlists
+
+// Get the #playlists div---This was straight forward to understand and implement
+const playlistsDiv = document.getElementById('playlists');
 
 
+
+// Dynamically create and append elements to display each Guardian's playlist
+playlists.forEach(({ guardian, playlist }) => {
+    // Create a div for each Guardian's playlist
+    const guardianDiv = document.createElement('div');
+    guardianDiv.className = 'playlist';
+
+    // Create and append the Guardian's name
+    const guardianName = document.createElement('h2');
+    guardianName.textContent = `${guardian}'s Playlist`;
+    guardianDiv.appendChild(guardianName);
+
+    // Create and append the list of songs
+    const songList = document.createElement('ul');
+    playlist.forEach(song => {
+        const songItem = document.createElement('li');
+        songItem.className = 'song';
+
+        const songTitle = document.createElement('span');
+        songTitle.className = 'song-title';
+        songTitle.textContent = song.title;
+
+        const songArtist = document.createElement('span');
+        songArtist.textContent = ` by ${song.artist}`;
+
+        songItem.appendChild(songTitle);
+        songItem.appendChild(songArtist);
+        songList.appendChild(songItem);
+    });
+    guardianDiv.appendChild(songList);
+
+    // Append the Guardian's playlist div to the #playlists div
+    playlistsDiv.appendChild(guardianDiv);
+});
     
 
+function generatePlaylist(guardians, songs) {
+    return Object.entries(guardians).map(([guardian, preferredGenre]) => ({
+        guardian,
+        playlist: songs.filter(song => song.genre.includes(preferredGenre))
+    }));
+}
 
-
-// Call generatePlaylist and display the playlists for each Guardian
