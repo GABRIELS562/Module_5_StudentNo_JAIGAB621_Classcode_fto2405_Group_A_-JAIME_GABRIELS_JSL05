@@ -99,10 +99,3 @@ playlists.forEach(({ guardian, playlist }) => {
 });
     
 
-function generatePlaylist(guardians, songs) {
-    return Object.entries(guardians).map(([guardian, preferredGenre]) => ({
-        guardian,
-        playlist: songs.filter(song => song.genre.includes(preferredGenre))
-    }));
-}
-
