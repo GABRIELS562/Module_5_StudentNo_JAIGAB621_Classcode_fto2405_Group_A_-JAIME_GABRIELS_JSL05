@@ -22,10 +22,16 @@ const songs = [
 
 // Object containing each Guardian's preferred genre
 const guardians = {
+    
     "Star-Lord": "Rock",
     "Gamora": "Pop",
+    "Drax": "Rap", 
+    "Rocket": "Hip Hop", 
+    "Groot": "Pop"
     // Add preferences for Drax, Rocket, and Groot
 };
+
+console.log(guardians)
 
 // Function to generate playlist based on preferred genre
 function generatePlaylist(guardians, songs) {
