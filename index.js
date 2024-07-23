@@ -33,16 +33,28 @@ const guardians = {
 
 //console.log(guardians)
 
-// Function to generate playlist based on preferred genre
+/* Function to generate playlist based on preferred genre
+Explanation of code below: 
+- function takes two arguments one object and one array --First time iv come across an example like this-- 
+- Object.entries(guardians)---Converts the guardians object into an array of key-value pairs (guardian name and preferred genre).
+- .map(([guardian, preferredGenre]) => ...): Iterates over each guardian-genre pair. Creates a new object for each guardian.
+- { guardian, playlist: ... }: Creates an object with two properties: guardian: The guardian's name. playlist: An array of songs filtered based on the guardian's preferred genre.
+ songs.filter(song => song.genre.toLowerCase() === preferredGenre.toLowerCase()):
+- Filters the songs array to include only songs whose genre matches the guardian's preferred genre.
+Converts both song.genre and preferredGenre to lowercase for case-insensitive comparison.
+*/        
+
+        
 function generatePlaylist(guardians, songs) {
+   
     return Object.entries(guardians).map(([guardian, preferredGenre]) => ({
         guardian,
-        playlist: songs.filter(song => song.genre.includes(preferredGenre))
-    }));
+        playlist: songs.filter(song => song.genre.toLowerCase() === preferredGenre.toLowerCase())
+    }))
 }
 const playlist = generatePlaylist(guardians, songs);
 
-//console.log(playlist); 
+console.log(playlist); 
 
 
     
