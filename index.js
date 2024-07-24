@@ -1,3 +1,12 @@
+/* Hi Benjamin, this exercise was really tough. I had to do extensive research and AI to help me along the steps.
+It really seems complicated but i have tried to break down each line of code. I will keep practicing this specific
+ example and hopefully it will stick*/
+
+
+
+
+
+
 // Array of song objects. Add at least 5 songs with title, artist, and genre properties.
 const songs = [
     { title: "Hooked on a Feeling", artist: "Blue Swede", genre: "Pop" },
@@ -18,7 +27,7 @@ const songs = [
     { title: "Stronger", artist: "Kanye West", genre: "Hip Hop" },
     // Feel free to add even more songs
 ];
-
+//console.log(songs);
 
 // Object containing each Guardian's preferred genre
 const guardians = {
@@ -31,7 +40,7 @@ const guardians = {
     // Add preferences for Drax, Rocket, and Groot
 };
 
-//console.log(guardians)
+//console.log(guardians);
 
 /* Function to generate playlist based on preferred genre
 Explanation of code below: 
@@ -45,15 +54,18 @@ Converts both song.genre and preferredGenre to lowercase for case-insensitive co
 */        
 
         
-function generatePlaylist(guardians, songs) {
+function generatePlaylist(guardians, songs) /* Functions takes two arguments */ {
    
-    return Object.entries(guardians).map(([guardian, preferredGenre]) => ({
+    return Object.entries(guardians).map(([guardian, preferredGenre]) => ({ /* Object.entries converts guardians into an array of key-value pairs
+        (guardian name and preferred genre)                                  .map it uses the map method to iterate over each key-value pair and create a new object.                                                             */
         guardian,
         playlist: songs.filter(song => song.genre.includes(preferredGenre))
             }));
         }
 
 const playlists = generatePlaylist(guardians, songs);
+
+console.log(Object.entries(guardians));
 
 //console.log(playlists); 
 
@@ -65,32 +77,32 @@ const playlistsDiv = document.getElementById('playlists');
 
 
 // Dynamically create and append elements to display each Guardian's playlist
-playlists.forEach(({ guardian, playlist }) => {
+playlists.forEach(({ guardian, playlist }) => { //iterates over playlist array. Each iteration creates a new object with two properties: guardian: The guardian's name. playlist: An array of songs filtered based on the guardian's preferred genre.
     // Create a div for each Guardian's playlist
-    const guardianDiv = document.createElement('div');
-    guardianDiv.className = 'playlist';
+    const guardianDiv = document.createElement('div');// Create new div
+    guardianDiv.className = 'playlist'; //add class name from css
 
     // Create and append the Guardian's name
-    const guardianName = document.createElement('h2');
+    const guardianName = document.createElement('h2'); // Create new h2 element
     guardianName.textContent = `${guardian}'s Playlist`;
-    guardianDiv.appendChild(guardianName);
+    guardianDiv.appendChild(guardianName); // Append the h2 element to the div
 
     // Create and append the list of songs
-    const songList = document.createElement('ul');
+    const songList = document.createElement('ul'); // Create new ul element
     playlist.forEach(song => {
         const songItem = document.createElement('li');
         songItem.className = 'song';
 
         const songTitle = document.createElement('span');
-        songTitle.className = 'song-title';
-        songTitle.textContent = song.title;
+        songTitle.className = 'song-title';//   Add class name from css
+        songTitle.textContent = song.title;// Add the song's title
 
-        const songArtist = document.createElement('span');
-        songArtist.textContent = ` by ${song.artist}`;
+        const songArtist = document.createElement('span');// Create new span element
+        songArtist.textContent = ` by ${song.artist}`;  // Add the song's artist
 
-        songItem.appendChild(songTitle);
-        songItem.appendChild(songArtist);
-        songList.appendChild(songItem);
+        songItem.appendChild(songTitle);// Append the span element to the li element
+        songItem.appendChild(songArtist);// Append the span element to the li element
+        songList.appendChild(songItem);// Append the li element to the ul element
     });
     guardianDiv.appendChild(songList);
 
